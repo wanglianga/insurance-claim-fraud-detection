@@ -56,7 +56,7 @@ public interface HistoricalClaimRepository extends JpaRepository<HistoricalClaim
     long countTotalClaimsByIdCard(@Param("idCard") String idCard);
 
     @Query("SELECT AVG(h.actualCompensation) FROM HistoricalClaim h WHERE " +
-           "h.accidentType = :accidentType AND h.claimStatus = 'COMPENSATED'")
+           "h.accidentType = :accidentType AND h.claimStatus = 'APPROVED'")
     java.math.BigDecimal findAverageCompensationByAccidentType(@Param("accidentType") AccidentType accidentType);
 
     boolean existsByClaimNumber(String claimNumber);

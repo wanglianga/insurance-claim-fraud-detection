@@ -38,10 +38,16 @@ public class FraudDetectionResultDTO {
     public Boolean isManualReviewRequired() {
         return manualReviewRequired;
     }
+    public Boolean getManualReviewRequired() {
+        return manualReviewRequired;
+    }
     public void setManualReviewRequired(Boolean manualReviewRequired) {
         this.manualReviewRequired = manualReviewRequired;
     }
     public Boolean isAutoApproveAllowed() {
+        return autoApproveAllowed;
+    }
+    public Boolean getAutoApproveAllowed() {
         return autoApproveAllowed;
     }
     public void setAutoApproveAllowed(Boolean autoApproveAllowed) {

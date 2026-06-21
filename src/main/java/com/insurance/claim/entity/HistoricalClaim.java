@@ -45,6 +45,12 @@ public class HistoricalClaim extends BaseEntity {
     @Column(name = "accident_region", length = 50)
     private String accidentRegion;
 
+    @Column(name = "accident_latitude")
+    private Double accidentLatitude;
+
+    @Column(name = "accident_longitude")
+    private Double accidentLongitude;
+
     @Column(name = "claim_amount", precision = 15, scale = 2)
     private BigDecimal claimAmount;
 

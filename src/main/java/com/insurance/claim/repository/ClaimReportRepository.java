@@ -48,14 +48,15 @@ public interface ClaimReportRepository extends JpaRepository<ClaimReport, Long> 
             @Param("excludeId") Long excludeId);
 
     @Query("SELECT c FROM ClaimReport c WHERE " +
-           "c.relatedAccidentId = :accidentId OR c.id = :accidentId")
+           "c.relatedAccidentId = :accidentId OR CAST(c.id AS string) = :accidentId")
     List<ClaimReport> findRelatedAccidents(@Param("accidentId") String accidentId);
 
     List<ClaimReport> findByRelatedAccidentId(String relatedAccidentId);
 
     @Query("SELECT c FROM ClaimReport c WHERE " +
            "c.accidentTime BETWEEN :startTime AND :endTime " +
-           "AND c.status <> 'REJECTED' AND c.status <> 'CLOSED'")
+           "AND c.status <> com.insurance.claim.enums.ClaimStatus.REJECTED " +
+           "AND c.status <> com.insurance.claim.enums.ClaimStatus.CLOSED")
     List<ClaimReport> findRecentActiveClaims(
             @Param("startTime") LocalDateTime startTime,
             @Param("endTime") LocalDateTime endTime);

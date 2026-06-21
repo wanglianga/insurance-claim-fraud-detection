@@ -31,7 +31,8 @@ public interface CompensationConclusionRepository extends JpaRepository<Compensa
     Optional<CompensationConclusion> findFirstByClaimIdOrderByCreatedAtDesc(Long claimId);
 
     @Query("SELECT COUNT(c) FROM CompensationConclusion c WHERE " +
-           "c.reviewResult = 'APPROVED' AND c.finalReviewTime BETWEEN :startTime AND :endTime")
+           "c.reviewResult = com.insurance.claim.enums.ReviewResult.APPROVED " +
+           "AND c.finalReviewTime BETWEEN :startTime AND :endTime")
     long countApprovedInPeriod(
             @Param("startTime") java.time.LocalDateTime startTime,
             @Param("endTime") java.time.LocalDateTime endTime);

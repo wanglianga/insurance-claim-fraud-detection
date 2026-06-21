@@ -24,12 +24,14 @@ public interface InsurancePolicyRepository extends JpaRepository<InsurancePolicy
             PolicyStatus status, LocalDate effectiveDate, LocalDate expiryDate);
 
     @Query("SELECT p FROM InsurancePolicy p WHERE p.insuredIdCard = :idCard " +
-           "AND p.status = 'ACTIVE' AND :date BETWEEN p.effectiveDate AND p.expiryDate")
+           "AND p.status = com.insurance.claim.enums.PolicyStatus.ACTIVE " +
+           "AND :date BETWEEN p.effectiveDate AND p.expiryDate")
     List<InsurancePolicy> findActivePoliciesByIdCardAndDate(
             @Param("idCard") String idCard, @Param("date") LocalDate date);
 
     @Query("SELECT p FROM InsurancePolicy p WHERE p.insuredItemIdentifier = :identifier " +
-           "AND p.status = 'ACTIVE' AND :date BETWEEN p.effectiveDate AND p.expiryDate")
+           "AND p.status = com.insurance.claim.enums.PolicyStatus.ACTIVE " +
+           "AND :date BETWEEN p.effectiveDate AND p.expiryDate")
     List<InsurancePolicy> findActivePoliciesByItemIdentifierAndDate(
             @Param("identifier") String identifier, @Param("date") LocalDate date);
 

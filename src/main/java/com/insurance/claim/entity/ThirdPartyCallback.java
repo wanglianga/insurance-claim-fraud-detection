@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "third_party_callbacks")
 public class ThirdPartyCallback extends BaseEntity {
 
     @Column(name = "callback_id", unique = true, length = 50)

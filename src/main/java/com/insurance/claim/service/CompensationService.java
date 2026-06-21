@@ -334,12 +334,6 @@ public class CompensationService {
         historicalClaimRepository.save(historicalClaim);
     }
 
-    @Transactional(readOnly = true)
-
-    @Transactional(readOnly = true)
-
-    @Transactional(readOnly = true)
-
     @Transactional
     public CompensationConclusion performManualReview(ManualReviewRequest request) {
         ClaimReport claim = claimReportRepository.findByClaimNumber(request.getClaimNumber())
