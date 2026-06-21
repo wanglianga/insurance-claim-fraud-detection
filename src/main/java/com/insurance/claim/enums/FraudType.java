@@ -1,0 +1,14 @@
+package com.insurance.claim.enums;
+
+public enum FraudType {
+    DUPLICATE_CLAIM,
+    TIME_CONFLICT,
+    IMAGE_TAMPERING,
+    ABNORMAL_AMOUNT,
+    RELATED_PERSON_FRAUD,
+    CROSS_REGION_SUSPICION,
+    INVOICE_REUSE,
+    MULTI_POLICY_FRAUD,
+    MATERIAL_FORGERY,
+    OTHER
+}

@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: claim-fraud-detection
+
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:insurance_claim}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    open-in-view: false
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 5000
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 10
+          min-idle: 5
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+
+server:
+  port: 8080
+
+fraud:
+  detection:
+    duplicate-claim-window-hours: 72
+    time-conflict-window-minutes: 60
+    abnormal-amount-threshold-multiplier: 3.0
+    image-tamper-check-enabled: true
+    cross-region-check-enabled: true
+    related-person-depth: 3
+    auto-approval-threshold: 85
+    manual-review-threshold: 50
